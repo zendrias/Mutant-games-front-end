@@ -2,12 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 
 function MakeALobby(props) {
 
+  const [validForm, setValidForm] = useState(false)
+
+  const formElement = useRef()
+
   const [formData, setFormData] = useState({
     //! Names Needed Here
   })
 
-  const formElement = useRef()
-
+  // Action Handlers
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -16,10 +19,9 @@ function MakeALobby(props) {
     e.preventDefault()
   }
 
-  const [validFrom, setValidForm] = useState(false)
 
   useEffect(() => {
-    formElement.current.chechValidity()
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
 
   return (
