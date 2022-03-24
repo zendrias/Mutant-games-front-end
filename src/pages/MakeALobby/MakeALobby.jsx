@@ -5,9 +5,12 @@ function MakeALobby(props) {
   const [validForm, setValidForm] = useState(false)
 
   const formElement = useRef()
-
+  // ! Make Sure To Set The Drop Down Menu Inputs Initial State To The First Selection
   const [formData, setFormData] = useState({
-    //! Names Needed Here
+    lobbyName: '',
+    chooseGame: '',
+    lobbyLimit: '',
+    playerRank: ''
   })
 
   // Action Handlers
@@ -28,30 +31,26 @@ function MakeALobby(props) {
     <>
       <h1>Create A Lobby</h1>
       <form onSubmit={handleSubmit} ref={formElement}>
-        <label htmlFor="lobby-name">Lobby Name</label>
+        <label htmlFor="lobbyName">Lobby Name</label>
         <input
           type="text"
-          id='lobby-name'
-          name='lobby-name'
+          id='lobbyName'
+          name='lobbyName'
           onChange={handleChange}
         />
-        <label htmlFor="choose-game">Choose A Game</label>
-        <select id='choose-game' onChange={handleChange} name='choose-game'>
-          <option value="sample">sample</option>
-          <option value="sample">sample</option>
+        <label htmlFor="chooseGame">Choose A Game</label>
+        <select id='choose-game' onChange={handleChange} name='chooseGame' value={formData.chooseGame}>
           <option value="sample">sample</option>
           <option value="sample">sample</option>
         </select>
-        <label htmlFor="lobby-limit">Player Limit</label>
+        <label htmlFor="lobbyLimit">Player Limit</label>
         <input
           type="text"
-          id='lobby-limit'
-          name='lobby-limit'
+          id='lobbyLimit'
+          name='lobbyLimit'
           onChange={handleChange} />
-        <label htmlFor="player-rank">Minimum Rank</label>
-        <select id='player-rank' name='player-rank' onChange={handleChange}>
-          <option value="sample">sample</option>
-          <option value="sample">sample</option>
+        <label htmlFor="playerRank">Minimum Rank</label>
+        <select id='playerRank' name='playerRank' onChange={handleChange}>
           <option value="sample">sample</option>
           <option value="sample">sample</option>
         </select>
